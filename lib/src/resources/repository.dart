@@ -5,5 +5,5 @@ import '../models/person_model.dart';
 class Repository {
   final nationalityApiProvider = NationalityApiProvider();
 
-  Future<Person> fetchNationalities() => nationalityApiProvider.fetchResult();
+  Future<Person> fetchPersonNationalities() => nationalityApiProvider.fetchResult();
 }
