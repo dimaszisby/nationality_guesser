@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nationality_guesser_app/src/ui/component/atom/search_name_button.dart';
 
 class SearchName extends StatefulWidget {
   @override
@@ -22,13 +23,13 @@ class _SearchNameState extends State<SearchName> {
     super.dispose();
   }
 
+  void searchName() {
+    print('Function Temp');
+  }
+
   @override
   Widget build(BuildContext context) {
-    final guessButton = ElevatedButton(
-      //TODO make custom atomic button
-      onPressed: () {},
-      child: const Text('Guess'),
-    );
+
 
     final nameTextField = Flexible(
       child: TextField(
@@ -66,7 +67,7 @@ class _SearchNameState extends State<SearchName> {
                 SizedBox(
                   height: 50,
                 ),
-                guessButton,
+                SearchNameButton(searchName),
               ],
             ),
           ),
