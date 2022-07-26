@@ -4,17 +4,17 @@ import '../models/person_model.dart';
 
 class PersonBloc {
   final _repository = Repository();
-  final _personFetcher = PublishSubject<Person>(); //LEARN: Published Subject
+  final _personNationalityFetcher = PublishSubject<Person>(); //LEARN: Published Subject
 
-  Observable<Person> get personNationalities => _personFetcher.stream;
+  Observable<Person> get personNationalities => _personNationalityFetcher.stream;
 
   fetchPersonNationalities() async {
     Person person = await _repository.fetchPersonNationalities();
-    _personFetcher.sink.add(person);
+    _personNationalityFetcher.sink.add(person);
   }
 
   dispose() {
-    _personFetcher.close();
+    _personNationalityFetcher.close();
   }
   final bloc = PersonBloc();
 }
