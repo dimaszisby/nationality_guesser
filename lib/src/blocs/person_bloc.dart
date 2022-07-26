@@ -16,4 +16,5 @@ class PersonBloc {
   dispose() {
     _personFetcher.close();
   }
+  final bloc = PersonBloc();
 }
