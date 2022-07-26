@@ -2,30 +2,56 @@ import 'package:flutter/foundation.dart';
 import 'dart:async';
 import 'dart:convert';
 
-class _Person {
-  final String? _name;
-  final List<_Country>? _results;
+class Person {
+  final String name;
+  final List<Country> countries;
 
-  _Person({this._name, this._results});
+  Person({
+    required this.name,
+    required this.countries,
+  });
 
-  factory _Person.fromJson(Map<String, dynamic> parsedJson) {
-    return _Person(
-    _name: parsedJson['name'],
-    _results: parsedJson['country']
+  factory Person.fromJson(Map<String, dynamic> parsedJson) {
+    final name = parsedJson['name'] as String;
+    final countriesData = parsedJson['country'] as List<dynamic>;
+    // final countries = countriesData.map((countryData) => Country(fromJson(countryData)).to)
+    final countries = countriesData
+        .map((countryData) => Country.fromJson(countryData))
+        .toList();
+
+    return Person(
+      name: name,
+      countries: countries,
     );
   }
 }
 
-class _Country {
-  final String? country_id;
-  final double? probability;
+class Country {
+  final String country_id;
+  final double probability;
 
-  _Country({this.country_id, this.probability});
+  Country({
+    required this.country_id,
+    required this.probability,
+  });
 
-  factory _Country.fromJson(Map<String, dynamic> parsedJson){
-    return _Country(
-      country_id: parsedJson['country_id'], 
-      probability: parsedJson['probability']
-    );
+  factory Country.fromJson(Map<String, dynamic> parsedJson) {
+    final country_id = parsedJson['country_id'] as String;
+    final probability = parsedJson['probability'] as double;
+
+    return Country(country_id: country_id, probability: probability);
   }
+
+  Map<String, dynamic> toJson() {
+    return {'country_id': country_id, 'probability': probability};
+  }
+}
+
+//TODO: Delete this when are not needed
+class DummyPerson {
+  final String dummyName;
+  final String dummyCountry;
+  final double dummyProbability;
+
+  DummyPerson(this.dummyName, this.dummyCountry, this.dummyProbability);
 }
