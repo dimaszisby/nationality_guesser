@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nationality_guesser_app/src/ui/component/atom/search_name_button.dart';
+import 'package:nationality_guesser_app/src/ui/component/atom/search_textfield.dart';
 
 class SearchName extends StatefulWidget {
   @override
@@ -24,28 +25,11 @@ class _SearchNameState extends State<SearchName> {
   }
 
   void searchName() {
-    print('Function Temp');
+    print(name);
   }
 
   @override
   Widget build(BuildContext context) {
-
-
-    final nameTextField = Flexible(
-      child: TextField(
-        controller: _nameController,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Full Name',
-        ),
-        onChanged: (text) {
-          setState(() {
-            name = text;
-          });
-        },
-      ),
-    );
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -63,7 +47,20 @@ class _SearchNameState extends State<SearchName> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                nameTextField,
+                Flexible(
+                  child: TextField(
+                    controller: _nameController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Name',
+                    ),
+                    onChanged: (text) {
+                      setState(() {
+                        name = text;
+                      });
+                    },
+                  ),
+                ),
                 SizedBox(
                   height: 50,
                 ),

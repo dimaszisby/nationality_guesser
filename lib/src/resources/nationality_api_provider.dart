@@ -1,16 +1,20 @@
 import 'dart:async';
-import 'package:http/http.dart' show Client;
 import 'dart:convert';
-import './models/person_model.dart';
+
+import 'package:http/http.dart' show Client;
+
+import '../models/person_model.dart';
 
 class NationalityApiProvider {
   Client client = Client();
-  final _apiKey = ''; //No API key for this API
+  final _apiKey = ''; //No API key for this API, to be removed
+  final _base_url = "https://api.nationalize.io";
 
   Future<Person> fetchResult() async {
     print('Fetching Person on API');
 
-    final response = await client.get("https://api.nationalize.io?name=michael");
+    final response =
+        await client.get("https://api.nationalize.io?name=michael"); //TODO: Change here with base URL
     print(response.body.toString());
 
     if (response.statusCode == 200) {
@@ -21,5 +25,4 @@ class NationalityApiProvider {
       throw Exception('Failed to Fetch Data');
     }
   }
-
 }
