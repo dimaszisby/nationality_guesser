@@ -14,7 +14,6 @@ class Person {
   factory Person.fromJson(Map<String, dynamic> parsedJson) {
     final name = parsedJson['name'] as String;
     final countriesData = parsedJson['country'] as List<dynamic>;
-    // final countries = countriesData.map((countryData) => Country(fromJson(countryData)).to)
     final countries = countriesData
         .map((countryData) => Country.fromJson(countryData))
         .toList();

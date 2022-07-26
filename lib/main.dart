@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './src/app.dart';
-import './src/ui/organism/nationality_result_list.dart';
+import 'src/search_name.dart';
+import './src/ui/component/organism/nationality_result_list.dart';
 
 void main() {
-  runApp(NationalityResultList('Dimas', 1.00));
+  runApp(SearchName());
 }
