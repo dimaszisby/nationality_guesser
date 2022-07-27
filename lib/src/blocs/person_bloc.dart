@@ -8,7 +8,7 @@ enum GuesserAction { Post, Fetch }
 
 class GuesserBloc {
   final _repository = Repository();
-  //NOTE: -Testing for Stream block state management
+  
   //State Stream Controller
   final _stateStreamController = StreamController<List<Country>>();
   StreamSink<List<Country>> get nationaliltiesSink => _stateStreamController.sink;
@@ -42,17 +42,9 @@ class GuesserBloc {
     });
   }
 
-  // NOTE: This is the default
-  // fetchPersonNationalities() async {
-  //   Person person = await _repository.fetchPersonNationalities();
-  //   _personNationalityFetcher.sink.add(person);
-  // }
-
   void dispose() {
-    // _personNationalityFetcher.close();
     _stateStreamController.close();
     _eventStreamController.close();
   }
 
-  // final bloc = GuesserBloc();
 }
