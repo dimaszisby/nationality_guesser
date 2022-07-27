@@ -14,9 +14,9 @@ class GuesserBloc {
 
   //NOTE: -Testing for Stream block state management
   //State Stream Controller
-  final _stateStreamController = StreamController<Country>();
-  StreamSink<Country> get nationaliltiesSink => _stateStreamController.sink;
-  Stream<Country> get nationalitiesStream => _stateStreamController.stream;
+  final _stateStreamController = StreamController<List<Country>>();
+  StreamSink<List<Country>> get nationaliltiesSink => _stateStreamController.sink;
+  Stream<List<Country>> get nationalitiesStream => _stateStreamController.stream;
 
   //Event Stream Controller
   final _eventStreamController = StreamController<GuesserAction>();
@@ -31,9 +31,9 @@ class GuesserBloc {
       } else if (event == GuesserAction.Fetch) {
         //Fetching Search Result
         try {
-          GuesserModel guess = await _repository.fetchPersonNationalities();
-          if (guess != null) {
-            nationaliltiesSink.add(guess);
+          Country country = await _repository.fetchPersonNationalities();
+          if (country != null) {
+            nationaliltiesSink.add(country);
           } else {
             nationaliltiesSink
                 .addError('person_bloc.dart: Fetch Data Failed');
