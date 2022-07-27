@@ -45,13 +45,14 @@ class _NationalityResultListState extends State<NationalityResultList> {
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Center(
-                child: Text(
-              'Try agin later',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 34,
+              child: Text(
+                'Try agin later',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 34,
+                ),
               ),
-            ));
+            );
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
             return progressBar;
@@ -93,9 +94,9 @@ class _NationalityResultListState extends State<NationalityResultList> {
                                 ),
                               ],
                             ),
-                            Divider(height: mediaQuery.size.height * 0.15, thickness: 20, color: Colors.black),
+                            VerticalDivider(color: Colors.black),
                             Column(
-                               mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 const Text(
