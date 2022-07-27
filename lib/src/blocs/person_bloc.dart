@@ -31,9 +31,9 @@ class GuesserBloc {
       } else if (event == GuesserAction.Fetch) {
         //Fetching Search Result
         try {
-          Country country = await _repository.fetchPersonNationalities();
-          if (country != null) {
-            nationaliltiesSink.add(country);
+          GuesserModel guesser = await _repository.fetchPersonNationalities();
+          if (guesser != null) {
+            nationaliltiesSink.add(guesser.countries);
           } else {
             nationaliltiesSink
                 .addError('person_bloc.dart: Fetch Data Failed');
