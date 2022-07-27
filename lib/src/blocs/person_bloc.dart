@@ -8,7 +8,7 @@ enum GuesserAction { Post, Fetch }
 
 class GuesserBloc {
   final _repository = Repository();
-  
+
   //State Stream Controller
   final _stateStreamController = StreamController<List<Country>>();
   StreamSink<List<Country>> get nationaliltiesSink => _stateStreamController.sink;

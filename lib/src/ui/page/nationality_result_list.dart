@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
 
 import '../../blocs/person_bloc.dart';
 import '../../models/person_model.dart';
@@ -10,15 +9,8 @@ class NationalityResultList extends StatefulWidget {
 }
 
 class _NationalityResultListState extends State<NationalityResultList> {
-  // const MyWidget({Key? key}) : super(key: key);
   final _personBloc = GuesserBloc();
-
   late String name;
-
-  // NationalityResultList(this.countryResult, this.probabilityResult);
-  // List<DummyPerson> dummyPerson = [
-  //   DummyPerson('Dimas', 'Indonesia', 1.00),
-  // ];
 
   @override
   initState() {
@@ -27,49 +19,47 @@ class _NationalityResultListState extends State<NationalityResultList> {
   }
 
   @override
-  void dispose() {}
+  void dispose() {
+    _personBloc.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Name Here'),
+        title: const Text('Result'),
+        backgroundColor: Colors.teal,
       ),
-      body: Container(
-        child: StreamBuilder<List<Country>>(
+      body: StreamBuilder<List<Country>>(
           stream: _personBloc.nationalitiesStream,
           builder: (context, snapshot) {
-            print('Snapshot Instantiated'); //TODO: Remove Prints
             if (snapshot.hasError) {
-              return Center(
-                child: Text('${snapshot.error}'),
-              );
-            } else {
+              return Text('Try agin later');
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: const CircularProgressIndicator());
+            }
+            if (snapshot.hasData) {
               return SafeArea(
                 child: ListView.builder(
                   itemCount: snapshot.data?.length,
                   itemBuilder: (context, index) {
-                    print(
-                        'snapshot data [0]: ${snapshot.data?[0].countryId}'); //TODO: Remove Prints
                     var country = snapshot.data?[index];
-                    var probConvert = (country?.probability) as double;
-                    print(probConvert);
-
-                    return Container(
+                    return SizedBox(
                       height: mediaQuery.size.height * 0.1,
                       child: Card(
                         elevation: 10,
+                        margin: const EdgeInsets.all(10),
                         child: Padding(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'Country Name: ${country?.countryId}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
                                 ),
@@ -84,10 +74,19 @@ class _NationalityResultListState extends State<NationalityResultList> {
                   },
                 ),
               );
+            } else {
+              return CircularProgressIndicator();
             }
-          },
-        ),
-      ),
+          }
+
+          // if (snapshot.hasError) {
+          //   //TODO: Make more conditions (e.g loading)
+          //   return Center(
+          //     child: Text('${snapshot.error}'),
+          //   );
+          // } else {}
+
+          ),
     );
   }
 }
