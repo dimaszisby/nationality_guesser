@@ -4,9 +4,9 @@ import '../resources/repository.dart';
 import 'package:rxdart/rxdart.dart';
 import '../models/person_model.dart';
 
-enum PersonAction { Post, Fetch }
+enum GuesserAction { Post, Fetch }
 
-class PersonBloc {
+class GuesserBloc {
   final _repository = Repository();
   // final _personNationalityFetcher = PublishSubject<Person>(); //LEARN: Published Subject
 
@@ -14,32 +14,32 @@ class PersonBloc {
 
   //NOTE: -Testing for Stream block state management
   //State Stream Controller
-  final _stateStreamController = StreamController<Person>();
-  StreamSink<Person> get personNationalitiesSink => _stateStreamController.sink;
-  Stream<Person> get personNationalitiesStream => _stateStreamController.stream;
+  final _stateStreamController = StreamController<Country>();
+  StreamSink<Country> get nationaliltiesSink => _stateStreamController.sink;
+  Stream<Country> get nationalitiesStream => _stateStreamController.stream;
 
   //Event Stream Controller
-  final _eventStreamController = StreamController<PersonAction>();
-  EventSink<PersonAction> get eventSink => _eventStreamController.sink;
-  Stream<PersonAction> get eventStream => _eventStreamController.stream;
+  final _eventStreamController = StreamController<GuesserAction>();
+  EventSink<GuesserAction> get eventSink => _eventStreamController.sink;
+  Stream<GuesserAction> get eventStream => _eventStreamController.stream;
 
-  PersonBloc() {
+  GuesserBloc() {
     eventStream.listen((event) async {
-      if (event == PersonAction.Post) {
+      if (event == GuesserAction.Post) {
         //POST person name
         return; //TODO: POST  DATA HERE
-      } else if (event == PersonAction.Fetch) {
+      } else if (event == GuesserAction.Fetch) {
         //Fetching Search Result
         try {
-          Person person = await _repository.fetchPersonNationalities();
-          if (person != null) {
-            personNationalitiesSink.add(person);
+          GuesserModel guess = await _repository.fetchPersonNationalities();
+          if (guess != null) {
+            nationaliltiesSink.add(guess);
           } else {
-            personNationalitiesSink
+            nationaliltiesSink
                 .addError('person_bloc.dart: Fetch Data Failed');
           }
         } on Exception catch (e) {
-          personNationalitiesSink
+          nationaliltiesSink
               .addError('person_bloc.dart: Fetch Data Failed');
         }
       }
@@ -58,5 +58,5 @@ class PersonBloc {
     _eventStreamController.close();
   }
 
-  final bloc = PersonBloc();
+  final bloc = GuesserBloc();
 }

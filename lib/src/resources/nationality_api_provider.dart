@@ -11,7 +11,7 @@ class NationalityApiProvider {
   final _base_url = "https://api.nationalize.io";
   //String name; //TODO: to be used in the client request
 
-  Future<GuesserModel> fetchResult() async {
+  Future<Country> fetchResult() async {
     print('Fetching Person on API');
 
     final response =
@@ -20,7 +20,7 @@ class NationalityApiProvider {
 
     if (response.statusCode == 200) {
       //successfull -> parse JSON
-      return GuesserModel.fromJson(json.decode(response.body));
+      return Country.fromJson(json.decode(response.body));
     } else {
       //not sucessful -> throw error
       throw Exception('Failed to Fetch Data');
