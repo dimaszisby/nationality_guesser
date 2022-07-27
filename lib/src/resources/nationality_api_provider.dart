@@ -9,8 +9,9 @@ class NationalityApiProvider {
   Client client = Client();
   final _apiKey = ''; //No API key for this API, to be removed
   final _base_url = "https://api.nationalize.io";
+  //String name; //TODO: to be used in the client request
 
-  Future<Person> fetchResult() async {
+  Future<GuesserModel> fetchResult() async {
     print('Fetching Person on API');
 
     final response =
@@ -19,7 +20,7 @@ class NationalityApiProvider {
 
     if (response.statusCode == 200) {
       //successfull -> parse JSON
-      return Person.fromJson(json.decode(response.body));
+      return GuesserModel.fromJson(json.decode(response.body));
     } else {
       //not sucessful -> throw error
       throw Exception('Failed to Fetch Data');
