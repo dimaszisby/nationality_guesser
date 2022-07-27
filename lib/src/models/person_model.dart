@@ -4,27 +4,27 @@ import 'dart:convert';
 
 //NOTE: Experiments on Data Model when error
 
-String newsModelToJson(Person data) => json.encode(data.toJson());
+String newsModelToJson(GuesserModel data) => json.encode(data.toJson());
 
-class Person {
+class GuesserModel {
   final String name;
   final List<Country> countries;
 
-  Person({
+  GuesserModel({
     required this.name,
     required this.countries,
   });
 
   //version 1 -> cant run on the UI StreamBuilder because of Data Type
   /*
-  factory Person.fromJson(Map<String, dynamic> parsedJson) {
+  factory GuesserModel.fromJson(Map<String, dynamic> parsedJson) {
     final name = parsedJson['name'] as String;
     final countriesData = parsedJson['country'] as List<dynamic>;
     final countries = countriesData
         .map((countryData) => Country.fromJson(countryData))
         .toList();
 
-    return Person(
+    return GuesserModel(
       name: name,
       countries: countries,
     );
@@ -32,7 +32,7 @@ class Person {
 */
 
   //version 2
-  factory Person.fromJson(Map<String, dynamic> json) => Person(
+  factory GuesserModel.fromJson(Map<String, dynamic> json) => GuesserModel(
         name: json["name"],
         countries:
             List<Country>.from(json["country"].map((x) => Country.fromJson(x))),
