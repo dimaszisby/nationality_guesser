@@ -12,10 +12,11 @@ class NationalityApiProvider {
   //String name; //TODO: to be used in the client request
 
   Future<GuesserModel> fetchResult() async {
+    //TODO: Remove when final
     print('Fetching Person on API');
 
-    final response = await client.get(
-        "https://api.nationalize.io?name=dimas"); //TODO: Change here with base URL
+    final response = await client.get("https://api.nationalize.io?name=dimas");
+    //TODO: Change here with base URL
     print(response.body.toString());
 
     if (response.statusCode == 200) {

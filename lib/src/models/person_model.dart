@@ -17,16 +17,16 @@ class GuesserModel {
     if (json['country'] != null) {
       country = <Country>[];
       json['country'].forEach((v) {
-        country.add(new Country.fromJson(v));
+        country.add(Country.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    if (this.country != null) {
-      data['country'] = this.country.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    if (country.isEmpty) {
+      data['country'] = country.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -44,9 +44,9 @@ class Country {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['country_id'] = this.countryId;
-    data['probability'] = this.probability;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['country_id'] = countryId;
+    data['probability'] = probability;
     return data;
   }
 }

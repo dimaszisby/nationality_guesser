@@ -6,7 +6,7 @@ import '../../../models/person_model.dart';
 class NationalityResultList extends StatefulWidget {
   late String name;
 
-  NationalityResultList({required this.name});
+  NationalityResultList({Key? key, required this.name}) : super(key: key);
 
   @override
   State<NationalityResultList> createState() => _NationalityResultListState(name: name);

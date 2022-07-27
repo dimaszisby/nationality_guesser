@@ -6,6 +6,8 @@ import '../atoms/search_name_button.dart';
 import '../atoms/search_textfield.dart';
 
 class SearchName extends StatefulWidget {
+  const SearchName({Key? key}) : super(key: key);
+
   @override
   State<SearchName> createState() => _SearchNameState();
 }
