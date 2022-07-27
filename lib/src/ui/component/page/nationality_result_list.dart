@@ -9,7 +9,8 @@ class NationalityResultList extends StatefulWidget {
   NationalityResultList({Key? key, required this.name}) : super(key: key);
 
   @override
-  State<NationalityResultList> createState() => _NationalityResultListState(name: name);
+  State<NationalityResultList> createState() =>
+      _NationalityResultListState(name: name);
 }
 
 class _NationalityResultListState extends State<NationalityResultList> {
@@ -22,7 +23,6 @@ class _NationalityResultListState extends State<NationalityResultList> {
   initState() {
     super.initState();
     _personBloc.eventSink.add(GuesserAction.Fetch);
-    
   }
 
   @override
@@ -63,25 +63,57 @@ class _NationalityResultListState extends State<NationalityResultList> {
                 itemBuilder: (context, index) {
                   var country = snapshot.data?[index];
                   return SizedBox(
-                    height: mediaQuery.size.height * 0.1,
+                    height: mediaQuery.size.height * 0.20,
                     child: Card(
                       elevation: 10,
                       margin: const EdgeInsets.all(10),
                       child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
+                        padding: const EdgeInsets.all(20),
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              'Country Name: ${country?.countryId}',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Country Name',
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Text(
+                                  '${country?.countryId}',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 32,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                                'Probability:${country?.probability.toStringAsFixed(2)}'),
+                            Divider(height: mediaQuery.size.height * 0.15, thickness: 20, color: Colors.black),
+                            Column(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                const Text(
+                                  'Probability',
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Text(
+                                  '${country?.probability.toStringAsFixed(2)}',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 32,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
