@@ -8,10 +8,6 @@ enum GuesserAction { Post, Fetch }
 
 class GuesserBloc {
   final _repository = Repository();
-  // final _personNationalityFetcher = PublishSubject<Person>(); //LEARN: Published Subject
-
-  //Observable<Person> get personNationalities => _personNationalityFetcher.stream; //NOTE: This is the default
-
   //NOTE: -Testing for Stream block state management
   //State Stream Controller
   final _stateStreamController = StreamController<List<Country>>();
@@ -33,7 +29,7 @@ class GuesserBloc {
         try {
           GuesserModel guesser = await _repository.fetchPersonNationalities();
           if (guesser != null) {
-            nationaliltiesSink.add(guesser.countries);
+            nationaliltiesSink.add(guesser.country);
           } else {
             nationaliltiesSink
                 .addError('person_bloc.dart: Fetch Data Failed');
@@ -58,5 +54,5 @@ class GuesserBloc {
     _eventStreamController.close();
   }
 
-  final bloc = GuesserBloc();
+  // final bloc = GuesserBloc();
 }

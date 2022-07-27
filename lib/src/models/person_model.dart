@@ -1,14 +1,15 @@
-import 'package:flutter/foundation.dart';
-import 'dart:async';
 import 'dart:convert';
+import 'dart:core';
+
+/*
 
 //NOTE: Experiments on Data Model when error
-
+GuesserModel newsModelFromJson(String str) => GuesserModel.fromJson(json.decode(str));
 String newsModelToJson(GuesserModel data) => json.encode(data.toJson());
 
 class GuesserModel {
-  final String name;
-  final List<Country> countries;
+  String name;
+  List<Country> countries;
 
   GuesserModel({
     required this.name,
@@ -45,8 +46,8 @@ class GuesserModel {
 }
 
 class Country {
-  final String country_id;
-  final double probability;
+  String country_id;
+  double probability;
 
   Country({
     required this.country_id,
@@ -79,6 +80,20 @@ class Country {
       };
 }
 
+// class EnumValues<T> {
+//   Map<String, T> map;
+//   Map<T, String> reverseMap;
+
+//   EnumValues(this.map);
+
+//   Map<T, String> get reverse {
+//     if (reverseMap == null) {
+//       reverseMap = map.map((k, v) => new MapEntry(v, k));
+//     }
+//     return reverseMap;
+//   }
+// }
+
 //TODO: Delete this when are not needed
 class DummyPerson {
   final String dummyName;
@@ -87,3 +102,55 @@ class DummyPerson {
 
   DummyPerson(this.dummyName, this.dummyCountry, this.dummyProbability);
 }
+
+*/
+
+GuesserModel welcomeFromJson(String str) => GuesserModel.fromJson(json.decode(str));
+
+String welcomeToJson(GuesserModel data) => json.encode(data.toJson());
+
+class GuesserModel {
+  String name = '';
+  List<Country> country = [];
+
+  GuesserModel(this.name, this.country);
+
+  GuesserModel.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    if (json['country'] != null) {
+      country = <Country>[];
+      json['country'].forEach((v) {
+        country.add(new Country.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    if (this.country != null) {
+      data['country'] = this.country.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Country {
+  String countryId = '';
+  double probability = 0.0;
+
+  Country(this.countryId, this.probability);
+
+  Country.fromJson(Map<String, dynamic> json) {
+    countryId = json['country_id'];
+    probability = json['probability'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['country_id'] = this.countryId;
+    data['probability'] = this.probability;
+    return data;
+  }
+}
+
