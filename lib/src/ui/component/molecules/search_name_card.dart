@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import '../page/nationality_result_list.dart';
 
@@ -30,80 +28,86 @@ class _SearchNameCardState extends State<SearchNameCard> {
     const progressBar = Center(child: CircularProgressIndicator());
     final mediaQuery = MediaQuery.of(context);
 
-    return Container(
+    return SingleChildScrollView(
+      child: Container(
         child: Align(
-      alignment: Alignment.centerLeft,
-      child: Padding(
-        padding: const EdgeInsets.only(right: 10),
-        child: Container(
-          decoration: const BoxDecoration(
-            boxShadow: [BoxShadow(blurRadius: 10)],
-          ),
-          child: Container(
-            height: mediaQuery.size.width * 0.8,
-            width: mediaQuery.size.width * 8,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: Colors.transparent,
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 10,),
+            child: Container(
+              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom + 10),
+              decoration: const BoxDecoration(
+                boxShadow: [BoxShadow(blurRadius: 10)],
               ),
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(10),
-                bottomRight: Radius.circular(10),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Flexible(
-                    child: TextField(
-                      controller: _txController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Name",
-                      ),
-                      onChanged: (text) {
-                        setState(
-                          () {
-                            personName = text;
+              child: Container(
+                height: mediaQuery.size.width * 0.8,
+                width: mediaQuery.size.width * 8,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(
+                    color: Colors.transparent,
+                  ),
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Flexible(
+                        child: TextField(
+                          controller: _txController,
+                          autofocus: true,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Name",
+                            focusColor: Colors.teal, 
+                          ),
+                          onChanged: (text) {
+                            setState(
+                              () {
+                                personName = text;
+                              },
+                            );
                           },
-                        );
-                      },
-                    ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Flexible(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (_txController != null) {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => NationalityResultList(
+                                        submittedName: _txController.text,
+                                      )));
+                            } else {
+                              return;
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.teal,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 50, vertical: 15),
+                              textStyle: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
+                          child: const Text('Search'),
+                        ),
+                      )
+                    ],
                   ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Flexible(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (_txController != null) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => NationalityResultList(
-                                    submittedName: _txController.text,
-                                  )));
-                        } else {
-                          return;
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.teal,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 50, vertical: 15),
-                          textStyle: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
-                      child: const Text('Search'),
-                    ),
-                  )
-                ],
+                ),
               ),
             ),
           ),
         ),
       ),
-    ));
+    );
   }
 }
