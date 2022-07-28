@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nationality_guesser_app/src/resources/nationality_api_provider.dart';
 
 import '../../../blocs/person_bloc.dart';
 import '../../../models/person_model.dart';
@@ -15,13 +16,15 @@ class NationalityResultList extends StatefulWidget {
 
 class _NationalityResultListState extends State<NationalityResultList> {
   final _personBloc = GuesserBloc();
-  late String name;
+  final _api = NationalityApiProvider();
+  String name;
 
   _NationalityResultListState({required this.name});
 
   @override
   initState() {
     super.initState();
+    // _api.fetchResult();
     _personBloc.eventSink.add(GuesserAction.Fetch);
   }
 
@@ -82,7 +85,7 @@ class _NationalityResultListState extends State<NationalityResultList> {
                                   'Country Name',
                                   style: TextStyle(fontSize: 14),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 Text(
@@ -94,7 +97,7 @@ class _NationalityResultListState extends State<NationalityResultList> {
                                 ),
                               ],
                             ),
-                            VerticalDivider(color: Colors.black),
+                            const VerticalDivider(color: Colors.black),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -103,7 +106,7 @@ class _NationalityResultListState extends State<NationalityResultList> {
                                   'Probability',
                                   style: TextStyle(fontSize: 14),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 Text(
