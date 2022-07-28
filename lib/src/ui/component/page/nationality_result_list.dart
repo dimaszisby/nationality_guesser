@@ -8,7 +8,8 @@ import '../../../models/person_model.dart';
 class NationalityResultList extends StatefulWidget {
   late String submittedName;
 
-  NationalityResultList({required this.submittedName});
+  NationalityResultList({Key? key, required this.submittedName})
+      : super(key: key);
 
   String get name => submittedName;
 
@@ -19,7 +20,6 @@ class NationalityResultList extends StatefulWidget {
 
 class _NationalityResultListState extends State<NationalityResultList> {
   final _personBloc = GuesserBloc();
-  final _api = NationalityApiProvider();
   String submittedName;
 
   _NationalityResultListState({required this.submittedName});
@@ -27,14 +27,12 @@ class _NationalityResultListState extends State<NationalityResultList> {
   @override
   initState() {
     super.initState();
-    print('[result - passed name 1]:${submittedName}');
     checkInput();
     _personBloc.eventSink.add(GuesserAction.Fetch);
   }
 
   checkInput() {
     _personBloc.setNameOnBloc = submittedName;
-    print('[result - passed name 2]:$submittedName');
   }
 
   @override
@@ -79,68 +77,103 @@ class _NationalityResultListState extends State<NationalityResultList> {
           }
           if (snapshot.hasData) {
             return SafeArea(
-              child: ListView.builder(
-                itemCount: snapshot.data?.length,
-                itemBuilder: (context, index) {
-                  var country = snapshot.data?[index];
-                  return SizedBox(
-                    height: mediaQuery.size.height * 0.20,
-                    child: Card(
-                      elevation: 10,
-                      margin: const EdgeInsets.all(10),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Country Name',
-                                  style: TextStyle(fontSize: 14),
-                                ),
-                                const SizedBox(
-                                  height: 15,
-                                ),
-                                Text(
-                                  '${country?.countryId}',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 32,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const VerticalDivider(color: Colors.black),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                const Text(
-                                  'Probability',
-                                  style: TextStyle(fontSize: 14),
-                                ),
-                                const SizedBox(
-                                  height: 15,
-                                ),
-                                Text(
-                                  '${country?.probability.toStringAsFixed(2)}',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 32,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20,
+                      left: 15,
+                      bottom: 10,
                     ),
-                  );
-                },
+                    child: Row(
+                      children: [
+                        Text(
+                          'Search Result for',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        SizedBox(width: 5),
+                        Text(
+                          '"${submittedName}"',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                    child: ListView.builder(
+                      itemCount: snapshot.data?.length,
+                      itemBuilder: (context, index) {
+                        var country = snapshot.data?[index];
+                        return SizedBox(
+                          height: mediaQuery.size.height * 0.20,
+                          child: Card(
+                            color: Colors.teal.withAlpha(220),
+                            elevation: 10,
+                            margin: const EdgeInsets.all(10),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'Country Name',
+                                        style: TextStyle(fontSize: 14, color: Colors.white,),
+                                      ),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      Text(
+                                        '${country?.countryId}',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 32, 
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const VerticalDivider(color: Colors.white,),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      const Text(
+                                        'Probability',
+                                        style: TextStyle(fontSize: 14, color: Colors.white,),
+                                      ),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      Text(
+                                        '${country?.probability.toStringAsFixed(2)}',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 32, color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             );
           } else {
