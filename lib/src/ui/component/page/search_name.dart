@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nationality_guesser_app/src/resources/repository.dart';
 
+import '../../../resources/nationality_api_provider.dart';
 import './nationality_result_list.dart';
 import '../../../blocs/person_bloc.dart';
 import '../atoms/search_name_button.dart';
@@ -13,10 +15,11 @@ class SearchName extends StatefulWidget {
 }
 
 class _SearchNameState extends State<SearchName> {
-
   final _personBloc = GuesserBloc();
-  late TextEditingController _nameController;
-  String name = "";
+  final _searchRepo = Repository();
+  final _api = NationalityApiProvider();
+  TextEditingController _nameController = TextEditingController();
+  String personName = '';
 
   @override
   void initState() {
@@ -31,8 +34,10 @@ class _SearchNameState extends State<SearchName> {
     super.dispose();
   }
 
-  void searchName() {
-
+  passNav() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            NationalityResultList(submittedName: _nameController.text)));
   }
 
   @override
@@ -47,52 +52,45 @@ class _SearchNameState extends State<SearchName> {
             style: TextStyle(fontSize: 18),
           ),
         ),
-        body: 
-        // StreamBuilder(
-        //   stream: _personBloc.eventStream,
-        //   builder: (context, snapshot) {
-        //     if (snapshot.hasError) {
-        //     return Text('');
-        //   }
-        //   if (snapshot.connectionState == ConnectionState.waiting) {
-        //     return progressBar;
-        //   }
-        //   if (snapshot.hasData) {
-        //     return Text('');
-        //   } else {
-        //     return progressBar;
-        //   }
-        //   }
-        //   child: 
-          Container(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Flexible(
-                  child: TextField(
-                    controller: _nameController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Name",
-                    ),
-                    onChanged: (text) {
-                      setState(() {
-                        name = text;
-                      });
-                    },
+        body: Container(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Flexible(
+                child: TextField(
+                  controller: _nameController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Name",
                   ),
+                  onChanged: (text) {
+                    setState(() {
+                      personName = text;
+                    });
+                  },
                 ),
-                const SizedBox(
-                  height: 50,
-                ),
-                Flexible(child: SearchNameButton(searchName)),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (_nameController != null) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => NationalityResultList(
+                            submittedName: _nameController.text)));
+                  } else {
+                    return;
+                  }
+                },
+                child: Text('Search'),
+              )
+            ],
           ),
         ),
-      );
-    
+      ),
+    );
   }
 }

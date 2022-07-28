@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SearchNameButton extends StatelessWidget {
-  final VoidCallback guessName;
+  final Function guessName;
 
   const SearchNameButton(this.guessName, {Key? key}) : super(key: key);
 

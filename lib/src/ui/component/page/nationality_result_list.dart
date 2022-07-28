@@ -1,37 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:nationality_guesser_app/src/resources/nationality_api_provider.dart';
+import 'package:nationality_guesser_app/src/resources/repository.dart';
 
 import '../../../blocs/person_bloc.dart';
 import '../../../models/person_model.dart';
 
 class NationalityResultList extends StatefulWidget {
-  late String name;
+  late String submittedName;
 
-  NationalityResultList({Key? key, required this.name}) : super(key: key);
+  NationalityResultList({required this.submittedName});
+
+  String get name => submittedName;
 
   @override
   State<NationalityResultList> createState() =>
-      _NationalityResultListState(name: name);
+      _NationalityResultListState(submittedName: submittedName);
 }
 
 class _NationalityResultListState extends State<NationalityResultList> {
   final _personBloc = GuesserBloc();
   final _api = NationalityApiProvider();
-  String name;
+  String submittedName;
 
-  _NationalityResultListState({required this.name});
+  _NationalityResultListState({required this.submittedName});
 
   @override
   initState() {
     super.initState();
-    // _api.fetchResult();
+    print('[result - passed name 1]:${submittedName}');
+    checkInput();
     _personBloc.eventSink.add(GuesserAction.Fetch);
+  }
+
+  checkInput() {
+    _personBloc.setNameOnBloc = submittedName;
+    print('[result - passed name 2]:$submittedName');
   }
 
   @override
   void dispose() {
     _personBloc.dispose();
     super.dispose();
+  }
+
+  String getNameOnView(String name) {
+    return submittedName;
+  }
+
+  set setNameOnView(String newName) {
+    submittedName = newName;
   }
 
   @override

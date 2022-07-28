@@ -5,5 +5,5 @@ import './src/ui/component/page/search_name.dart';
 import './src/ui/component/page/nationality_result_list.dart';
 
 void main() {
-  runApp(MaterialApp(home: NationalityResultList()));
+  runApp(MaterialApp(home: SearchName()));
 }
