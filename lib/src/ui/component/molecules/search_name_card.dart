@@ -24,8 +24,6 @@ class _SearchNameCardState extends State<SearchNameCard> {
 
   @override
   Widget build(BuildContext context) {
-    String personName = '';
-    const progressBar = Center(child: CircularProgressIndicator());
     final mediaQuery = MediaQuery.of(context);
 
     final searchButton = Flexible(
@@ -64,7 +62,6 @@ class _SearchNameCardState extends State<SearchNameCard> {
         onChanged: (text) {
           setState(
             () {
-              personName = text;
             },
           );
         },

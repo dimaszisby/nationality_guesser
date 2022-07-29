@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nationality_guesser_app/main.dart';
 
 class TitleCustom extends StatelessWidget {
   const TitleCustom({Key? key}) : super(key: key);

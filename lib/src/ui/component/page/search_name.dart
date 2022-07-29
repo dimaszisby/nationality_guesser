@@ -28,7 +28,6 @@ class _SearchNameState extends State<SearchName> {
 
   @override
   Widget build(BuildContext context) {
-    const progressBar = Center(child: CircularProgressIndicator());
     final mediaQuery = MediaQuery.of(context);
 
     return MaterialApp(
@@ -44,11 +43,11 @@ class _SearchNameState extends State<SearchName> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TitleCustom(),
+                    const TitleCustom(),
                     SizedBox(height: mediaQuery.size.width * 0.25),
                     SearchNameCard(),
                     SizedBox(height: mediaQuery.size.width * 0.25),
-                    NationalizeLink(),
+                    const NationalizeLink(),
                   ],
                 ),
               ),

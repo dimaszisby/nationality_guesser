@@ -5,6 +5,7 @@ import 'package:nationality_guesser_app/src/resources/repository.dart';
 import '../../../blocs/person_bloc.dart';
 import '../../../models/person_model.dart';
 
+// ignore: must_be_immutable
 class NationalityResultList extends StatefulWidget {
   late String submittedName;
 
@@ -15,6 +16,7 @@ class NationalityResultList extends StatefulWidget {
 
   @override
   State<NationalityResultList> createState() =>
+      // ignore: no_logic_in_create_state
       _NationalityResultListState(submittedName: submittedName);
 }
 
@@ -88,16 +90,16 @@ class _NationalityResultListState extends State<NationalityResultList> {
                     ),
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           'Search Result for',
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                           ),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Text(
-                          '"${submittedName}"',
-                          style: TextStyle(
+                          '"$submittedName"',
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         )
