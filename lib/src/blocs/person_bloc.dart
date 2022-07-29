@@ -37,10 +37,9 @@ class GuesserBloc {
         if (event == GuesserAction.Post) {
         } else if (event == GuesserAction.Fetch) {
           try {
+            _repository.setNameOnRepo = getNameOnBloc;
             GuesserModel guesser =
-                //TODO: Figure out how to connect it to Repo
-                // await _repository.fetchPersonNationalities();
-                await NationalityApiProvider().fetchResult(getNameOnBloc);
+                await _repository.fetchPersonNationalities();
             if (guesser != null) {
               nationaliltiesSink.add(guesser.country);
             } else {
