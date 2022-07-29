@@ -28,8 +28,7 @@ class _SearchNameCardState extends State<SearchNameCard> {
     const progressBar = Center(child: CircularProgressIndicator());
     final mediaQuery = MediaQuery.of(context);
 
-    return SingleChildScrollView(
-      child: Container(
+    return Container(
         child: Align(
           alignment: Alignment.centerLeft,
           child: Padding(
@@ -107,7 +106,7 @@ class _SearchNameCardState extends State<SearchNameCard> {
             ),
           ),
         ),
-      ),
-    );
+      );
+    
   }
 }

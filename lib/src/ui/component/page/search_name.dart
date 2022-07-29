@@ -33,26 +33,25 @@ class _SearchNameState extends State<SearchName> {
 
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.teal,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          title: const Text(
-            '',
-            style: TextStyle(fontSize: 18),
-          ),
-        ),
+        resizeToAvoidBottomInset: false,
         body: Container(
           //container for Main Foreground color
           color: Colors.teal,
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                TitleCustom(),
-                SearchNameCard(),
-                NationalizeLink(),
-              ],
+            child: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TitleCustom(),
+                    SizedBox(height: mediaQuery.size.width * 0.25),
+                    SearchNameCard(),
+                    SizedBox(height: mediaQuery.size.width * 0.25),
+                    NationalizeLink(),
+                  ],
+                ),
+              ),
             ),
           ),
         ),
