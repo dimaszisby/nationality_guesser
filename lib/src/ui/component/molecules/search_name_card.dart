@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../page/nationality_result_list.dart';
 
+// ignore: use_key_in_widget_constructors
 class SearchNameCard extends StatefulWidget {
   @override
   State<SearchNameCard> createState() => _SearchNameCardState();
@@ -61,8 +62,7 @@ class _SearchNameCardState extends State<SearchNameCard> {
         ),
         onChanged: (text) {
           setState(
-            () {
-            },
+            () {},
           );
         },
       ),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nationality_guesser_app/src/resources/nationality_api_provider.dart';
-import 'package:nationality_guesser_app/src/resources/repository.dart';
 
 import '../../../blocs/person_bloc.dart';
 import '../../../models/person_model.dart';

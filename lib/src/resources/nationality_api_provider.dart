@@ -11,7 +11,6 @@ class NationalityApiProvider {
 
   Future<GuesserModel> fetchResult(String nameOnApi) async {
     final response = await client.get("$_base_url?name=$nameOnApi");
-    print(response.body.toString());
 
     if (response.statusCode == 200) {
       return GuesserModel.fromJson(json.decode(response.body));

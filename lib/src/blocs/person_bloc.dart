@@ -1,10 +1,7 @@
 import 'dart:async';
 
-import 'package:nationality_guesser_app/src/resources/nationality_api_provider.dart';
-import 'package:nationality_guesser_app/src/ui/component/page/nationality_result_list.dart';
-
+import '../resources/nationality_api_provider.dart';
 import '../resources/repository.dart';
-import 'package:rxdart/rxdart.dart';
 import '../models/person_model.dart';
 
 enum GuesserAction { Post, Fetch }
