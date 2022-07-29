@@ -33,7 +33,7 @@ class _SearchNameState extends State<SearchName> {
 
     return MaterialApp(
       home: Scaffold(
-        resizeToAvoidBottomInset: false,
+        // resizeToAvoidBottomInset: false,
         body: Container(
           //container for Main Foreground color
           color: Colors.teal,

@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
 class NationalizeLink extends StatelessWidget {
+  const NationalizeLink({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
+      children: const [
+        Text(
           "Learn more about",
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w300,
           ),
         ),
-        const SizedBox(
+        SizedBox(
           width: 5,
         ),
-        const Text(
+        Text(
           "nationalize.io",
           style: TextStyle(
             color: Colors.amber,
@@ -27,6 +27,6 @@ class NationalizeLink extends StatelessWidget {
           ),
         ),
       ],
-    ));
+    );
   }
 }
