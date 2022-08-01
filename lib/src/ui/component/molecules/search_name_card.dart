@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nationality_guesser_app/src/ui/component/atoms/default_textfield.dart';
+import 'package:nationality_guesser_app/src/ui/component/atoms/search_name_button.dart';
 
 import '../page/nationality_result_list.dart';
 
@@ -27,47 +28,6 @@ class _SearchNameCardState extends State<SearchNameCard> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-
-    final searchButton = Flexible(
-      child: ElevatedButton(
-        onPressed: () {
-          if (_txController.text.isNotEmpty) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => NationalityResultList(
-                  submittedName: _txController.text,
-                ),
-              ),
-            );
-          } else {
-            return;
-          }
-        },
-        style: ElevatedButton.styleFrom(
-            primary: Colors.teal,
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-            textStyle:
-                const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-        child: const Text('Search'),
-      ),
-    );
-
-    final textfield = Flexible(
-      child: TextField(
-        controller: _txController,
-        autofocus: true,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: "Name",
-          focusColor: Colors.teal,
-        ),
-        onChanged: (text) {
-          setState(
-            () {},
-          );
-        },
-      ),
-    );
 
     return Align(
       alignment: Alignment.centerLeft,
@@ -103,7 +63,21 @@ class _SearchNameCardState extends State<SearchNameCard> {
                 const SizedBox(
                   height: 50,
                 ),
-                searchButton,
+                SearchNameButton(
+                  () {
+                    if (_txController.text.isNotEmpty) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => NationalityResultList(
+                            submittedName: _txController.text,
+                          ),
+                        ),
+                      );
+                    } else {
+                      return;
+                    }
+                  },
+                )
               ],
             ),
           ),
