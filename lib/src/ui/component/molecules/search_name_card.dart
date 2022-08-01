@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nationality_guesser_app/src/ui/component/atoms/default_textfield.dart';
 
 import '../page/nationality_result_list.dart';
 
@@ -98,7 +99,7 @@ class _SearchNameCardState extends State<SearchNameCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                textfield,
+                DefaultTextField(_txController),
                 const SizedBox(
                   height: 50,
                 ),
