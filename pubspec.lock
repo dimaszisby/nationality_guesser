@@ -4,63 +4,63 @@ packages:
   async:
     dependency: transitive
     description:
-      : async
+      name: async
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
   bloc:
     dependency: transitive
     description:
-      : bloc
+      name: bloc
       url: "https://pub.dartlang.org"
     source: hosted
     version: "8.0.3"
   boolean_selector:
     dependency: transitive
     description:
-      : boolean_selector
+      name: boolean_selector
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
   characters:
     dependency: transitive
     description:
-      : characters
+      name: characters
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
   charcode:
     dependency: transitive
     description:
-      : charcode
+      name: charcode
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
   clock:
     dependency: transitive
     description:
-      : clock
+      name: clock
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
   collection:
     dependency: transitive
     description:
-      : collection
+      name: collection
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
   cupertino_icons:
     dependency: "direct main"
     description:
-      : cupertino_icons
+      name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
   fake_async:
     dependency: transitive
     description:
-      : fake_async
+      name: fake_async
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
@@ -72,14 +72,14 @@ packages:
   flutter_bloc:
     dependency: "direct main"
     description:
-      : flutter_bloc
+      name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
     version: "8.0.1"
   flutter_lints:
     dependency: "direct dev"
     description:
-      : flutter_lints
+      name: flutter_lints
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
@@ -91,77 +91,77 @@ packages:
   http:
     dependency: "direct main"
     description:
-      : http
+      name: http
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.2"
   http_parser:
     dependency: transitive
     description:
-      : http_parser
+      name: http_parser
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
   lints:
     dependency: transitive
     description:
-      : lints
+      name: lints
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
   matcher:
     dependency: transitive
     description:
-      : matcher
+      name: matcher
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.11"
   material_color_utilities:
     dependency: transitive
     description:
-      : material_color_utilities
+      name: material_color_utilities
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.4"
   meta:
     dependency: transitive
     description:
-      : meta
+      name: meta
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
   nested:
     dependency: transitive
     description:
-      : nested
+      name: nested
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
   path:
     dependency: transitive
     description:
-      : path
+      name: path
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
   pedantic:
     dependency: transitive
     description:
-      : pedantic
+      name: pedantic
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.11.1"
   provider:
     dependency: transitive
     description:
-      : provider
+      name: provider
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.0.3"
   rxdart:
     dependency: "direct main"
     description:
-      : rxdart
+      name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.18.1"
@@ -173,56 +173,56 @@ packages:
   source_span:
     dependency: transitive
     description:
-      : source_span
+      name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
   stack_trace:
     dependency: transitive
     description:
-      : stack_trace
+      name: stack_trace
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0"
   stream_channel:
     dependency: transitive
     description:
-      : stream_channel
+      name: stream_channel
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
   string_scanner:
     dependency: transitive
     description:
-      : string_scanner
+      name: string_scanner
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
   term_glyph:
     dependency: transitive
     description:
-      : term_glyph
+      name: term_glyph
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
   test_api:
     dependency: transitive
     description:
-      : test_api
+      name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
   typed_data:
     dependency: transitive
     description:
-      : typed_data
+      name: typed_data
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
   vector_math:
     dependency: transitive
     description:
-      : vector_math
+      name: vector_math
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"

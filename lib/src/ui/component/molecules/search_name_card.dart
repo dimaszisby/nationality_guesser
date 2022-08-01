@@ -74,33 +74,36 @@ class _SearchNameCardState extends State<SearchNameCard> {
         padding: const EdgeInsets.only(
           right: 10,
         ),
-        child: Card(
-          child: Container(
-            height: mediaQuery.size.width * 0.8,
-            width: mediaQuery.size.width * 8,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: Colors.transparent,
-              ),
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(10),
-                bottomRight: Radius.circular(10),
-              ),
+        child: Container(
+          height: mediaQuery.size.width * 0.8,
+          width: mediaQuery.size.width * 8,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: Colors.transparent,
             ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  textfield,
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  searchButton,
-                ],
-              ),
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+            boxShadow: const [
+              BoxShadow(
+                blurRadius: 25,
+              )
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                textfield,
+                const SizedBox(
+                  height: 50,
+                ),
+                searchButton,
+              ],
             ),
           ),
         ),
