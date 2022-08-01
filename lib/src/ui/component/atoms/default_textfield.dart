@@ -4,14 +4,13 @@ class DefaultTextField extends StatefulWidget {
 
   late TextEditingController txEdit;
 
-  DefaultTextField(this.txEdit);
+  DefaultTextField(this.txEdit, {Key? key}) : super(key: key);
 
   @override
   State<DefaultTextField> createState() => _DefaultTextFieldState(txEdit);
 }
 
 class _DefaultTextFieldState extends State<DefaultTextField> {
-  final TextEditingController _txController = TextEditingController();
 
   late TextEditingController txEdit;
 

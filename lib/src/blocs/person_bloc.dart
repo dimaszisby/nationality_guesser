@@ -1,14 +1,12 @@
 import 'dart:async';
 
-import '../resources/nationality_api_provider.dart';
 import '../resources/repository.dart';
 import '../models/person_model.dart';
 
-enum GuesserAction { Post, Fetch }
+enum GuesserAction { post, fetch }
 
 class GuesserBloc {
   final _repository = Repository();
-  final _api = NationalityApiProvider();
   late String _nameOnBloc = '';
 
   //State Stream Controller
@@ -34,8 +32,8 @@ class GuesserBloc {
   GuesserBloc() {
     eventStream.listen(
       (event) async {
-        if (event == GuesserAction.Post) {
-        } else if (event == GuesserAction.Fetch) {
+        if (event == GuesserAction.post) {
+        } else if (event == GuesserAction.fetch) {
           try {
             _repository.setNameOnRepo = getNameOnBloc;
             GuesserModel guesser =

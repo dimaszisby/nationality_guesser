@@ -28,7 +28,7 @@ class _NationalityResultListState extends State<NationalityResultList> {
   initState() {
     super.initState();
     checkInput();
-    _personBloc.eventSink.add(GuesserAction.Fetch);
+    _personBloc.eventSink.add(GuesserAction.fetch);
   }
 
   checkInput() {
