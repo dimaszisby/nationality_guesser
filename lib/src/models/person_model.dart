@@ -7,13 +7,13 @@ GuesserModel welcomeFromJson(String str) =>
 String welcomeToJson(GuesserModel data) => json.encode(data.toJson());
 
 class GuesserModel {
-  String gName = '';
+  String name = '';
   List<Country> country = [];
 
-  GuesserModel(this.gName, this.country);
+  GuesserModel(this.name, this.country);
 
   GuesserModel.fromJson(Map<String, dynamic> json) {
-    gName = json['name'];
+    name = json['name'];
     if (json['country'] != null) {
       country = <Country>[];
       json['country'].forEach((v) {
@@ -24,7 +24,7 @@ class GuesserModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['name'] = gName;
+    data['name'] = name;
     if (country.isEmpty) {
       data['country'] = country.map((v) => v.toJson()).toList();
     }

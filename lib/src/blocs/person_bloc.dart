@@ -1,22 +1,21 @@
 import 'dart:async';
 
+import '../di/injection.dart';
 import '../resources/repository.dart';
 import '../models/person_model.dart';
 
 enum GuesserAction { post, fetch }
 
 class GuesserBloc {
-  final _repository = Repository();
+  final _repository = locator<Repository>();
   late String _nameOnBloc = '';
 
-  //State Stream Controller
   final _stateStreamController = StreamController<List<Country>>();
   StreamSink<List<Country>> get nationaliltiesSink =>
       _stateStreamController.sink;
   Stream<List<Country>> get nationalitiesStream =>
       _stateStreamController.stream;
 
-  //Event Stream Controller
   final _eventStreamController = StreamController<GuesserAction>();
   EventSink<GuesserAction> get eventSink => _eventStreamController.sink;
   Stream<GuesserAction> get eventStream => _eventStreamController.stream;

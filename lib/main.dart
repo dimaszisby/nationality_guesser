@@ -1,9 +1,12 @@
 // @dart=2.9
 
 import 'package:flutter/material.dart';
+
+import './src/di/injection.dart';
 import './src/ui/component/page/search_name.dart';
 
 void main() {
+  setupLocator();
   runApp(const MyApp());
 }
 
