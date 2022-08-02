@@ -1,16 +1,16 @@
 # nationality_guesser_app
 
-A new Flutter project.
+A fluter app project using the nationalize.io API to guess nationalities based on the person name.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+What was gained and included in this project:
+- Reactive Programming (w/ RxDart)
+- Asyncronous Programming
+- State Management (w/ BloC)
+- Network Request from API
+- Dependency Injection (w/ GetIt)
+- Atomic Design Approach
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Upcoming:
+- Clean Architecture (might be w/ MobX)
