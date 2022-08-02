@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class DefaultTextField extends StatefulWidget {
+class ReusableTextField extends StatefulWidget {
 
   late TextEditingController txEdit;
 
-  DefaultTextField(this.txEdit, {Key? key}) : super(key: key);
+  ReusableTextField(this.txEdit, {Key? key}) : super(key: key);
 
   @override
-  State<DefaultTextField> createState() => _DefaultTextFieldState(txEdit);
+  State<ReusableTextField> createState() => _ReusableTextFieldState(txEdit);
 }
 
-class _DefaultTextFieldState extends State<DefaultTextField> {
+class _ReusableTextFieldState extends State<ReusableTextField> {
 
   late TextEditingController txEdit;
 
-  _DefaultTextFieldState(this.txEdit);
+  _ReusableTextFieldState(this.txEdit);
 
   @override
   Widget build(BuildContext context) {

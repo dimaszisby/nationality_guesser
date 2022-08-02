@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SearchNameButton extends StatelessWidget {
+class ReusableButton extends StatelessWidget {
   final VoidCallback _handler;
 
-  const SearchNameButton(this._handler, {Key? key})
+  const ReusableButton(this._handler, {Key? key})
       : super(key: key);
 
   @override

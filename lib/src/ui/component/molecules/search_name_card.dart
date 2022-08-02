@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nationality_guesser_app/src/ui/component/atoms/default_textfield.dart';
+import 'package:nationality_guesser_app/src/ui/component/atoms/reusable_textfield.dart';
 import 'package:nationality_guesser_app/src/ui/component/atoms/search_name_button.dart';
 
 import '../page/nationality_result_list.dart';
@@ -59,11 +59,11 @@ class _SearchNameCardState extends State<SearchNameCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                DefaultTextField(_txController),
+                ReusableTextField(_txController),
                 const SizedBox(
                   height: 50,
                 ),
-                SearchNameButton(
+                ReusableButton(
                   () {
                     if (_txController.text.isNotEmpty) {
                       Navigator.of(context).push(
