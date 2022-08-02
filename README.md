@@ -6,7 +6,7 @@ A fluter app project using the nationalize.io API to guess nationalities based o
 
 What was gained and included in this project:
 - Reactive Programming (w/ RxDart)
-- Asyncronous Programming
+- Asynchronous Programming
 - State Management (w/ BloC)
 - Network Request from API
 - Dependency Injection (w/ GetIt)
