@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import './src/di/injection.dart';
-import './src/ui/component/page/search_name.dart';
+import 'src/ui/component/page/page_search_name.dart';
 
 void main() {
   setupLocator();

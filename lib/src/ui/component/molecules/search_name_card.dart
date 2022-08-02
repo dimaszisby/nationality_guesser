@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nationality_guesser_app/src/ui/component/atoms/reusable_textfield.dart';
-import 'package:nationality_guesser_app/src/ui/component/atoms/search_name_button.dart';
+import 'package:nationality_guesser_app/src/ui/component/atoms/reusable_button.dart';
 
-import '../page/nationality_result_list.dart';
+import '../page/page_nationality_result_list.dart';
 
 // ignore: use_key_in_widget_constructors
 class SearchNameCard extends StatefulWidget {
