@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../blocs/person_bloc.dart';
+import '../../../di/injection.dart';
 import '../../../models/person_model.dart';
 
 // ignore: must_be_immutable
@@ -19,7 +20,7 @@ class NationalityResultList extends StatefulWidget {
 }
 
 class _NationalityResultListState extends State<NationalityResultList> {
-  final _personBloc = GuesserBloc();
+  final _personBloc = locator<GuesserBloc>();
   String submittedName;
 
   _NationalityResultListState({required this.submittedName});
