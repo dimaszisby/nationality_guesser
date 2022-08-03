@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' show Client;
-import 'package:nationality_guesser_app/src/di/injection.dart';
 
+import '../di/injection.dart';
 import '../models/person_model.dart';
 
 class NationalityApiProvider {
