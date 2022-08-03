@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../atoms/nationalize_link.dart';
+import '../atoms/reusable_link.dart';
 import '../atoms/title_custom.dart';
 import '../molecules/search_name_card.dart';
 import '../../../blocs/person_bloc.dart';
