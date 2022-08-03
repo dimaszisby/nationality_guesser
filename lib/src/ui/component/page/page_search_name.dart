@@ -30,6 +30,22 @@ class _SearchNameState extends State<SearchName> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
 
+    final apiRefLink = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          'Learn more about ',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w300,
+          ),
+        ),
+        ReusableLink(
+          link: 'nationlize.io',
+        ),
+      ],
+    );
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -45,7 +61,7 @@ class _SearchNameState extends State<SearchName> {
                     SizedBox(height: mediaQuery.size.width * 0.25),
                     SearchNameCard(),
                     SizedBox(height: mediaQuery.size.width * 0.25),
-                    const NationalizeLink(),
+                    apiRefLink,
                   ],
                 ),
               ),

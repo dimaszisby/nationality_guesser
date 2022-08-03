@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class ReusableTextField extends StatefulWidget {
-
   late TextEditingController txEdit;
 
   ReusableTextField(this.txEdit, {Key? key}) : super(key: key);
@@ -11,7 +10,6 @@ class ReusableTextField extends StatefulWidget {
 }
 
 class _ReusableTextFieldState extends State<ReusableTextField> {
-
   late TextEditingController txEdit;
 
   _ReusableTextFieldState(this.txEdit);
