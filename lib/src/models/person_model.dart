@@ -7,8 +7,8 @@ GuesserModel welcomeFromJson(String str) =>
 String welcomeToJson(GuesserModel data) => json.encode(data.toJson());
 
 class GuesserModel {
-  String name = '';
-  List<Country> country = [];
+ late  String name;
+  late List<Country> country;
 
   GuesserModel(this.name, this.country);
 
@@ -33,8 +33,8 @@ class GuesserModel {
 }
 
 class Country {
-  String countryId = '';
-  double probability = 0.0;
+  late String countryId;
+  late double probability;
 
   Country(this.countryId, this.probability);
 
